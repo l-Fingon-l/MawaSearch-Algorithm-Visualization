@@ -13,6 +13,10 @@ body {
     background: #304f08;
 }
 
+title {
+    display: none;
+}
+
 h1 {
     text-align: center;
     color:rgb(49, 56, 60);
