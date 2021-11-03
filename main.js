@@ -96,7 +96,9 @@ function addRow(array) {
 // get the row ready to be displayed
 function styleRow(row, l, m, r) {
     const children = row.children;
-    children[l].className = children[r].className = "edge";
+    //children[l].className = children[r].className = "edge";
+    children[l].className = "l";
+    children[r].className = "r";
     children[m].className = "m";
 }
 
@@ -114,6 +116,11 @@ function startMonitor(n) {
     document.getElementsByTagName("td")[3].innerHTML = n;
     document.getElementsByTagName("td")[4].innerHTML = 0;
 
+    let shift = "0vw";
+    if (n < 15) shift = "30vw";
+    else if (n < 35) shift = "15vw";
+    display.style.marginLeft = shift;
+
     monitor.style.visibility = "visible";
     complexity.style.visibility = "visible";
 }
@@ -128,38 +135,43 @@ const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
 // got refactored heavily as it was essentially unreadable. Still the same thing.
 const mawaSearch = async(array, i, l, r) => {
-    const m = parseInt((l + r) / 2);
+    try {
+        const m = parseInt((l + r) / 2);
 
-    // **********************************
-    // this is not the algorithm yet
-    styleRow(addRow(array), l, m, r);
-    updateMonitor(l, m, r);
-    await sleep(getSleepTime());
-    // **********************************
+        // **********************************
+        // this is not the algorithm yet
+        styleRow(addRow(array), l, m, r);
+        updateMonitor(l, m, r);
+        await sleep(getSleepTime());
+        // **********************************
 
-    // the algorithm itself
-    if (array[m] == i) 
-    {
-        return m;
-    } 
-    else 
-    {
-        array.splice(m, 1); // remove the middle element
-
-        if (m == 0) 
+        // the algorithm itself
+        if (array[m] == i) 
         {
-            if (array.length)
-            {
-                mawaSearch(array, i, 0, array.length - 1);
-            }
-        } 
-        else if (array[m - 1] > i) 
-        {
-            mawaSearch(array, i, l, m - 1);
+            return m;
         } 
         else 
         {
-            mawaSearch(array, i, m - 1, r - 1);
+            array.splice(m, 1); // remove the middle element
+
+            if (m == 0) 
+            {
+                if (array.length)
+                {
+                    mawaSearch(array, i, 0, array.length - 1);
+                }
+            } 
+            else if (array[m - 1] > i) 
+            {
+                mawaSearch(array, i, l, m - 1);
+            } 
+            else 
+            {
+                mawaSearch(array, i, m - 1, r - 1);
+            }
         }
+    }
+    catch (err) {
+        alert("Killer input for this algorithm. Possibly, memory corruption.");
     }
 }
