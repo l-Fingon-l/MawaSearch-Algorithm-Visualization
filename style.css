@@ -28,7 +28,7 @@ h1 {
     height: 10vh;
     width: 100%;
     top: 5vh;
-    grid-template: 100% / repeat(4, 4fr) repeat(16, 1fr);
+    grid-template: 100% / 5fr repeat(3, 4fr) repeat(16, 1fr);
     position: sticky;
 }
 
@@ -38,7 +38,7 @@ h1 {
 }
 
 .monitored-values {
-    grid-column: 5 / 6;
+    grid-column: 4 / 5;
     visibility: hidden;
 }
 
@@ -102,6 +102,10 @@ button {
     margin-left: 0.5em;
 }
 
+.display {
+    margin-left: 30vw;
+}
+
 /* a row */
 .display div{
     padding: 6px;
@@ -117,8 +121,13 @@ button {
     border: 1px solid #d7e3ee;
 }
 
-.edge {
+.r {
     background-color: rgb(138, 221, 29);
+    font-weight: bold;
+}
+
+.l {
+    background-color: rgb(189, 231, 49);
     font-weight: bold;
 }
 
