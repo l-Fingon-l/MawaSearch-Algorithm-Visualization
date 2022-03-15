@@ -17,6 +17,6 @@ This particular configuration is tuned to the Mawa-Search binary search algorith
 
 In addition to the visualization tool itself, a profound theoretical analysis of the algorithm was written and implemented into the project's documentation.  
 
-The papers that are paired with math proofs and are colorfully illustrated might be now found here:
+The papers that are paired with math proofs and are colorfully illustrated might now be found here:
 - [Algorithm's complexity analysis](https://github.com/Miezhiko/stalin-binary-search/blob/mawa/docs/complexity_analysis.md)
 - [The importance of left-right pointer locker](https://github.com/Miezhiko/stalin-binary-search/blob/mawa/docs/overcrossing_pointers_vulnerability.md)
